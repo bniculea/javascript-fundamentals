@@ -10,3 +10,8 @@ An easy introduction to the JavaScript Programming language
 
 ## Resources:
 - Eloquent JavaScript 4th edition
+
+## How to get the most out of it:
+
+- Most of the sections have exercises
+- For each of the exercises, you will have the solutions provided in the Answers folder, grouped by the section and then by the number of the exercise.

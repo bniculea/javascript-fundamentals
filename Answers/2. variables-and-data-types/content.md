@@ -31,3 +31,25 @@
         3.99
         2.56
     ```
+
+3. String immutabilty exercise
+    ```javascript
+            const str = 'I like feature phones more than the incomplete apples'
+            str.replace("feature", "android")
+            console.log(str)
+    ```
+    - Will display: `I like feature phones more than the incomplete apples`
+    - The initial string will be displayed because the replace method did not alter it, instead it returned a new string, though we didn't saved it.
+
+4. Typeof string character is still a character
+    - What will be the output of the following snippet:
+        ```javascript
+            const text = 'Hello'
+            console.log(typeof text.charAt(1))
+        ```
+    - The output will be `string` because there is no such type as `char` in JavaScript
+5. Retrieving the length of a string
+    ```javascript
+        const str = 'This is a random text'
+        console.log(str.length)
+    ```

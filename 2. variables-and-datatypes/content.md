@@ -149,3 +149,132 @@
         }
     ```
 ## Data types
+
+- In Javascript, we have the following data types:
+    * Numbers (e.g 1, 4.56, 34, etc.)
+    * Strings ("Blue", "Car", "Popescu")
+    * Booleans (true, false)
+    * undefined
+    * null
+    * objects
+
+### Numbers
+- Unlike other programming languages, in JavaScript there are no different types for floating point numbers and integer numbers. Both of them can be represented by using `Number`
+- When you declare a variable, you can find its type using the `typeof` operator like below:
+    ```javascript
+        const age = 32;
+        console.log(typeof age)
+        // it will display 'number'
+    ```
+- There are some special number values like:
+    - `NaN (Not-a-Number)`
+        - This type is used to represent ilegal math operations like:
+            ```javascript
+                let result = 'utv' - 21;
+            ```
+        - JavaScript allows you to check if something is a `NaN` or not using the:
+            ```javascript
+                Number.isNaN(NaN);//true
+                Number.isNaN(21);//false
+            ```
+    - `Infinity`/ `-Infinity`
+        - These types are used to represent scenarios like:
+            - Division by zero (when you divide a positive number by 0, you get `Infinity`, if it is a negative, it is `-Infinity`)
+            - Overflows (getting past the limit of `Number.MAX_VALUE`)  
+
+### Strings
+
+- Strings are very popular and there a lot of ways to represent and work with them
+- As examples of String data type we can have:
+    ```javascript
+        'hello world',
+        "hello world again"
+    ```
+    - you can see that unlike in other languages, a there is no difference between a string with `''` and one with `""` 
+        - Some languages will treat `''` as simple chars and `""` as strings (e.g C/C++)
+- We also have string interpolation, where you can interpolate variables when building a string
+    ```javascript
+        let applesCount = 10;
+        let str = `Ana has ${applesCount} apples`
+        console.log(str)
+    ```
+    - Note that when you want to interpolate, you have to:
+        - Surround the entire string with ``
+        - Surround the interpolated variable with `${}`
+- We can create strings by concatenating them using the `+` operator
+    ```javascript
+        let str1 = 'I have 10 apples'
+        let str2 = 'yet they are just fruits'
+        let str3 = str1 + str2
+        console.log(str3)
+    ```
+- Because string is an object (more on this later), we also have some built in methods to manipulate it:
+    - Note: always go to MDN when you want to learn more about a certain type or method
+    - Popular methods:
+        - `replace`
+            ```javascript
+                const text = 'Lamborghini is a pretty neat car'
+                const replacedString = text.replace("Lamborghini", "Dacia 1310")
+                console.log(replacedString)
+            ```
+        - `substring`
+            ```javascript
+                const text = 'I have the Return of the King book by J.R.R Tolkien'
+                const substring = text.substring(6);
+                console.log(substring)
+            ```
+    - Some important stuff to notice:
+        - We access the methods by using the `dot notation`: `<variable>.<method>/<property>`
+            - We will use this exhaustively, as it is very common
+    ### Exercise 2.3:
+
+    - What will be the output of the following snippet
+        ```javascript
+            const str = 'I like feature phones more than the incomplete apples'
+            str.replace("feature", "android")
+            console.log(str)
+        ```
+- Note:
+    -  Most of the string methods are immutable, meaning that they will not modify the initial string.
+
+- Other important facts about Strings
+    - Because JavaScript was also inspired from C/C++, we do share some similarities when it comes to accesing a certain character in a string
+        - For example, if we want to access the second character in a given string we do it as:
+        ```javascript
+            const text = 'Two Tea To Two Two'
+            console.log(text[1])
+        ```
+        - But we can also do it with some method like:
+        ```javascript
+            const text = 'Two Tea To Two Two'
+            console.log(text.charAt(1))
+        ```
+
+    ### Exercise 2.4
+    - What will be the output of the following snippet:
+        ```javascript
+            const text = 'Hello'
+            console.log(typeof text.charAt(1))
+        ```
+    ### Exercise 2.5
+    - Given a variable of type string, how can we retrieve its length?
+
+### Booleans
+- This is the simplest type, as it can only have two values:
+    - `true`
+    - `false`
+- Usually, these types are used in conditionals and loops.
+- We will learn more about them when we will get to the logical operators 
+
+
+### Undefined and null
+
+- `undefined` might be the most popular word you will see when your javascript program is failing
+    - That is because `undefined` means that a variable has been declared but not initialized, so you can see it as a default value
+    - When you access a property that does not exist, it will also give you `undefined`
+    - Also functions that do not return an explicit value, will return `undefined`
+
+- `null` is a bit similar with the `undefined`, as there is still no value there, but it has been explicitly set by the programmer. 
+- As a short reminder:
+    - `undefined` used by the JavaScript to say that something has not been initialized
+    - `null` used by the developers to say that something has not been initialized.
