@@ -53,3 +53,4 @@
         const str = 'This is a random text'
         console.log(str.length)
     ```
+    - We see that `length` is a property and not a method, (you notice the missing parantheses)
