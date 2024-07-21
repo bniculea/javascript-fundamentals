@@ -8,6 +8,13 @@
     - const
     - hoisting
 
+- Data types
+    - Numbers
+    - Strings
+    - Booleans
+    - undefined/null
+    - Objects
+
 ## Variables
 
 - Variables in JavaScript, like in any other programming language are just a way to store values that we can easily reference them afterwards, by giving them a meaningfull name.
@@ -278,3 +285,156 @@
 - As a short reminder:
     - `undefined` used by the JavaScript to say that something has not been initialized
     - `null` used by the developers to say that something has not been initialized.
+
+
+### Objects
+
+- In JavaScript, an object is simply a collection of key-value pairs
+- Is important to know that the keys are always strings but the values can be any other type, including other objects
+- A small example of a variable that points to an object that represents a student:
+    ```javascript
+        let student = {
+            name: 'Andrei',
+            age: 21, 
+            overallExamScore: 87
+        }
+    ```
+- You can also create objects using the `new` operator like:
+    ```javascript
+        const object = new Object()
+        object.prop1 = 21;
+        object.prop2 = 'someValue'
+    ```
+- Note: `typeof someObject = 'object'`
+
+    ### Exercises 2.6
+    - Considering the initial definition of thed pet `object`, which of the statements are legal and which are not and why:
+        ```javascript
+            const pet = {
+                type: 'dog',
+                breed: 'Malinois',
+                age: 3 
+            }
+
+            // Statement #1
+            pet = {
+                type: 'cat',
+                age: 2
+            }
+
+            // Statement #2
+            pet.age = 1.4
+
+            // Statement #3
+            pet.type = 4.5
+        ```
+
+- Now, if we recall we spoke a bit about the 'dot notation' when we accessed the methods on the string variables (behind the scene, every string variable is an object), the same thing also applies when we access the properties of an object.
+- Let's say we have the following object:
+    ```javascript
+        const octavia = {
+            make: 'skoda',
+            model: 'octavia',
+            year: 2024,
+            cc: 1500
+        }
+    ```
+- If  we want to access the year property we can do it as:
+    ```javascript
+        octavia.year
+    ```
+- There is also another way to access a property, using the index operator or the bracket operator (if you know it as this) namely:
+    ```javascript
+        octavia['year']
+    ```
+    - The usefulness of this way of accessing a property is for cases when you eiter do not know the key in advance, or you have keys with spaces in name (they look uglu though)
+        ```javascript
+            const obj = {
+                'some weird key': 'some-value'
+            }
+
+            console.log(obj.some weird key) // syntax error
+            console.log(obj["some weird key"]) // valid
+        ```
+- It is very important to know that you can add and remove properties to/from an object at any time
+    ```javascript
+        const obj = {
+            age: 2,
+            name: 'some object'
+        }
+        obj.newProp = 'some-other-value'
+        console.log(obj)// the new property will be displayed, toghether with the others.
+        delete obj.age
+        console.log(obj) // the age property is no longer present in the obj, thus will not be displayed
+    ```
+
+- If you want to see if an object has a certain property there are a couple of ways to do it:
+    1. `hasOwnProperty`
+        ```javascript
+            const obj = {
+                age: 2,
+                name: 'some object'
+            }
+            console.log(obj.hasOwnProperty('age')); // true
+            console.log(obj.hasOwnProperty('height'));//false
+
+        ```
+    2. `hasOwn`
+        ```javascript
+            const obj = {
+                age: 2,
+                name: 'some object'
+            }
+
+            console.log(Object.hasOwn(obj, 'age')); // true
+            console.log(Object.hasOwn(obj,'height')); // false
+        ```
+        - Note: this might not be supported in all the browesers as it is a relative new method
+    3. `in` operator
+        ```javascript
+            const obj = {
+                age: 2,
+                name: 'some object'
+            }
+
+            console.log('name' in obj); // true
+            console.log('height' in obj) // false
+        ```
+- Another very important topic, when speaking about objects is the 'prototype'
+- The `prototype` is the object from which other objects inherit from, can be seen as a template that is taken as is by other objects and/or extended with other properties/methods
+- When you try to access a property or method on an object, first the JavaScript will look in the object's definition and if it cannot be found there, it will look into its prototype, and then to the prototype's prototype until it either finds it or not.
+- In JavaScript, all of the objects in the end inherit from the `Object.prototype`, is similar to the `Object` class in the Java (somehow)
+- You can assign a prototype to an object using the `__proto__` property:
+    ```javascript
+        const car = {
+            brand: 'n/a',
+            make: 'n/a',
+            color: 'n/a',
+        }
+
+        const porsche = {    
+            cc: 5000
+        }
+
+        porsche.__proto__ = car;
+        porsche.color = 'dark grey';
+        console.log(porsche.color)
+    ```
+- NOTE: the prototype of an object is also an object ;)
+
+    ### Exercises 2.7
+    
+    - Consider the following snippet, what will be the output:
+        ```javascript
+            let pet = {
+                type: 'dog',
+                breed: 'malinois'
+            }
+
+            let myDog = pet
+            myDog.age = 3;
+            myDog.breed = 'Doberman'
+
+            console.log(pet.age);
+            console.log(pet.breed);
+        ```

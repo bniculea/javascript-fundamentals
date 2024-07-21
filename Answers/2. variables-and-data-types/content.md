@@ -54,3 +54,49 @@
         console.log(str.length)
     ```
     - We see that `length` is a property and not a method, (you notice the missing parantheses)
+
+6. Updating const object
+    ```javascript
+            const pet = {
+                type: 'dog',
+                breed: 'Malinois',
+                age: 3 
+            }
+
+            // Statement #1
+            pet = {
+                type: 'cat',
+                age: 2
+            }
+
+            // Statement #2
+            pet.age = 1.4
+
+            // Statement #3
+            pet.type = 4.5
+    ```
+    - The #1 statement is invalid as we attempt to set a new value to a const variable.
+    - The #2 statement is valid as we do not make the pet object point to a complete new one, instead we are updating some of its properties
+    - The #3 statement is also valid, same reasoning as for the #2, but apart from this, maybe you wonder that we are allowed to change the type of the variable from a string to a number, which in JavaScript, is valid, as it is a dynamic language. Later we will talk about Typescript and we will see how can we enforce strong typing.
+
+
+7. Object references
+    ```javascript
+        let pet = {
+            type: 'dog',
+            breed: 'malinois'
+        }
+
+        let myDog = pet
+        myDog.age = 3;
+        myDog.breed = 'Doberman'
+
+        console.log(pet.age);
+        console.log(pet.breed);
+    ```
+    - The output will be:
+        ```bash
+            3
+            Doberman
+        ```
+        - That is because when we say `let myDog = pet`, we are pointing to the same object with two variables. This means that whatever changes will do with any of the variables, will affect the original object.
