@@ -14,7 +14,10 @@
     - Booleans
     - undefined/null
     - Objects
+    - Arrays
 
+- Advanced topics
+    - Shallow copy vs Deep Copy
 ## Variables
 
 - Variables in JavaScript, like in any other programming language are just a way to store values that we can easily reference them afterwards, by giving them a meaningfull name.
@@ -438,3 +441,96 @@
             console.log(pet.age);
             console.log(pet.breed);
         ```
+
+### Arrays
+
+- Arrays are just a data structure that allows you to group multiple values in one place
+- Unlike other strong typed languages, JavaScript allows you to put values of different type in the same array:
+    ```javascript
+        const arr = ["Ana", "are", 2, {"fruct": "para", "cantitate": 2}]
+    ```
+- There is no restriction of what you can put in an array. You can put whatever datatype you want (including functions)
+- But if you can do something, it doesn't mean it is always ok to do it! Thus I strongly recommend to have one value type per array
+
+#### Creating arrays
+Now let's see some ways to create arrays:
+1. Array Literal Notation:
+    ```javascript
+        let fruits = ["Apple", "Banana", "Cherry"];
+    ```
+
+2. Using the Array constructor
+    ```javascript
+        let fruits = new Array("Apple", "Banana", "Cherry");
+    ```
+3. Using the `Array.from() method`
+    ```javascript
+        let numbers = Array.from([1, 2, 3])
+    ```
+    - More details about this method here:  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from 
+
+#### Accessing elements
+
+- In order to access an element in an array we use the `index` operator where we specify the position of the element we want to retrieve. Also remember that Arrays are `0` based also in JavaScript:
+    ```javascript
+        const numbers = ["one", "two", "three", "four"]
+        console.log(numbers[0]) // "first element => one
+        console.log(numbers[1]) // "second element => two
+        console.log(numbers[2]) // "third element => three
+        console.log(numbers[3]) // "fourth element => four
+    ```
+- Also, if you recall, in other programming languages, when you accessed an element at an index that is outside the range of an array (meaning that if for example your array has 5 elements and you try to access arr[7]) it failed with some exceptions. In javascript, there will be no exceptions or errors, you will just receive an `undefined` value
+- Arrays are very popular in JavaScript, thus you have a lot of methods built in the language that allows you to play with them.
+
+
+### Common Array methods
+- Some of the methods include:
+    - `concat()`: Merges two or more arrays.
+    - `slice()`: Extracts a section of an array and returns a new array.
+    - `splice()`: Adds/removes elements from an array.
+i   - `indexOf()`: Returns the first index of a specified element.
+    - `includes()`: Checks if an array contains a specified element.
+    - `join()`: Joins all elements of an array into a string.
+    - `map` -> iterates over the method of an array, returning another array obtained by applying a certain function to each of the elements
+    - `push` -> adds another element(s) into the array
+    - `find` -> returns the first element in the array that satisfy a certain condition
+    - etc. -> You can see all the methods here, together with the examples: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
+        - Remember that MDN is your friend for most of the things you need in JavaScript (and not only).
+
+
+## Advanced topics -> Shallow copy vs Deep Copy
+
+- We will start this with an example, after you see the next snippet, what do you think will be the content of the `arr1`
+    ```javascript
+        const arr1 = [1,2,3,4]
+        const arr2 = [...arr1]; // this is the spread operator, don t worry, we will talk more about it in the next sections
+        arr2.push(5);
+        arr2.push(6);
+        arr2.push(7);
+        console.log(arr1) // 1,2,3,4
+        console.log(arr2) // 1,2,3,4,5,6,7
+        //TODO: add example  to show tthat only top level  is duplicated, the rest is not
+    ```
+    * The explanation here is that arr2 is not a different copy of an array, it is like a reference to the same array.
+    * This is what is called a `Shallow copy`
+
+- The problem/benefit (depending on how you see it) is that any updates to the shallow clone, will also pe applied to the original array.
+    - Note: there are a couple of methods  present in the Array prototype that return a shallow copy instead of a new one (for example `slice`)
+- The `shallow copy` functionality is also present in objects:
+    ```javascript
+        let originalStudent = {
+            name: "Super Student",
+            age: 24,
+            height: 172,
+            address: {
+                city: "Timisoara",
+                county: "Timis",
+                street: "MCB"
+            }
+        }
+        let shallowCopyStudent = Object.assign({}, originalStudent);
+        shallowCopyStudent.name = "Super Other Student"
+        shallowCopyStudent.address.city = "Sannicolau Mare"
+        console.log(originalStudent)
+    ```
+    - A shallow copy of an object duplicates the object's top-level properties but does not recursively copy nested objects. Changes to nested objects will affect both the original and the copied (shallow) object because they share the same references.
