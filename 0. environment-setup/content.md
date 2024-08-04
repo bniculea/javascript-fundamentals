@@ -63,11 +63,12 @@
 
 ## Run your first Node program
 
+### Hello world example
 - Create a directory in your desired location on your local machine
 - Inside of this directory, create a file called `index.js`
 - Paste the following code inside `index.js`
     ```javascript
-        console.log('Hello, guys!')
+        console.log('Hello, world!')
         var date = new Date();
     ```
 - Open the folder in Visual Studio code
