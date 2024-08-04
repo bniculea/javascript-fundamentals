@@ -70,3 +70,9 @@
         console.log('Hello, guys!')
         var date = new Date();
     ```
+- Open the folder in Visual Studio code
+- Open the terminal
+- Type the following command:
+    ```javascript
+        node index.js
+    ```
