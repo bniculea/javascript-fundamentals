@@ -500,19 +500,27 @@ i   - `indexOf()`: Returns the first index of a specified element.
 
 ## Advanced topics -> Shallow copy vs Deep Copy
 
-- We will start this with an example, after you see the next snippet, what do you think will be the content of the `arr1`
+- We will start this with an example, after you see the next snippet, what do you think will be the content of the `arr`
     ```javascript
-        const arr1 = [1,2,3,4]
-        const arr2 = [...arr1]; // this is the spread operator, don t worry, we will talk more about it in the next sections
-        arr2.push(5);
-        arr2.push(6);
-        arr2.push(7);
-        console.log(arr1) // 1,2,3,4
-        console.log(arr2) // 1,2,3,4,5,6,7
-        //TODO: add example  to show tthat only top level  is duplicated, the rest is not
+        const car = {
+            brand: 'Volkswagen',
+            model: 'Arteon'
+        }
+
+        const car2 = {
+        brand: 'Dacia',
+        model: 'Papuc'
+        }
+
+        const arr = [car,car2]
+        const arr2 = [...arr]
+
+        arr2[0].model = 'Passat CC'
+        console.log(arr)
+        console.log(arr2)
     ```
     * The explanation here is that arr2 is not a different copy of an array, it is like a reference to the same array.
-    * This is what is called a `Shallow copy`
+    * This is what is called a `Shallow copy`, we will see more a bit later in this file.
 
 - The problem/benefit (depending on how you see it) is that any updates to the shallow clone, will also pe applied to the original array.
     - Note: there are a couple of methods  present in the Array prototype that return a shallow copy instead of a new one (for example `slice`)
@@ -533,4 +541,10 @@ i   - `indexOf()`: Returns the first index of a specified element.
         shallowCopyStudent.address.city = "Sannicolau Mare"
         console.log(originalStudent)
     ```
-    - A shallow copy of an object duplicates the object's top-level properties but does not recursively copy nested objects. Changes to nested objects will affect both the original and the copied (shallow) object because they share the same references.
+
+- A shallow copy of an object duplicates the object's top-level properties but does not recursively copy nested objects. Changes to nested objects will affect both the original and the copied (shallow) object because they share the same references.
+
+Now is worth mentioning the other type of copying, namely the `Deep Copy`. A deep copy will create another object that is completely separated from the one used for cloning. Namely, each update to the clone will not alter the original one.
+
+### Practice:
+- Find how can we create a deep clone of an array similar with the one that we had above, with cars.
