@@ -48,10 +48,15 @@
         setTimeout(()=> console.log('I am the first statement'), 2000)
         setTimeout(()=>console.log('I am the second statement'), 1800)
         setTimeout(()=> console.log('I am the third statement'), 3000)
-        setTimeout(()=> console.log('I am the third statement'), 1740)
+        setTimeout(()=> console.log('I am the fourth statement'), 1740)
     ```
     - The output of the previous snippet cannot be deduced..and it can differ from run to run, because it is not ran in the order we want. The second parameter of the `setTimeout` function it tells that it should run only after that specific amount of time has passed (in milliseconds) but it is not a guarantee that it will run exactly after that specific amount of time. (we will learn more about this when we will get to the event loop)
 
+- What do you think will be the output of the following snippet:
+    ```JavaScript
+                setTimeout(()=> console.log('My Name is Bogdan'), 0)
+                console.log('And I am a big fan of LOTR')
+    ```
 
 ## Callbacks
 - In order to fix the problem that we have, namely to get the output in the desired order, we can make use of something that is called a callback
@@ -108,7 +113,7 @@
 - Think for example when you are clicking on a certain video when you are on your favorite social network. The video will either start after a certain amount of time, or it will fail (hopefully with a friendly message)'
 - Before seeing them at work, let s just speak a bit about a characteristic of the Promises, namely its states.
 - A Promise can be in one of the following states:
-    - Pending -> when it is waiting for a response
+    - Pending -> when it is waiting for a response. It is also the state in which is put automatically when you create the promise
         * a promise is usually in this state when it takes a bit more for the result to be computed
     - Fulfilled -> when it got a response and everything went ok. This is also called "resolved"
     - Rejected -> When something bad happened.
@@ -126,3 +131,82 @@
 
         console.log(promise)
     ```
+    - Play with the value of the `isOk` variable in order to get different results.
+    - If you want to simulate the status of pending, add a setTimeout call, something like:
+    ```JavaScript
+        const promise = new Promise((resolve, reject) => {
+            setTimeout(()=> {
+            const isOk = true
+            if (isOk) {
+                resolve('Everythinhg is ok, mate!')
+            } else {
+                reject('Something bad happened :(')
+            }
+            }, 10000)
+            
+        })
+
+        console.log(promise)
+    ```
+
+- Now that we know what are the states of a promise, let's see about the scenarios that we want to do on resolved and on rejected. For this, we will introduce the `then/catch` methods that are present on any Promise.
+    - `then()` -> this is the function that is called when the promise succeded and as an argument it receives what has been passed when the `resolve` was called.
+        - In the scenario above, the `then` function will receive the `Everythinhg is ok, mate!` message.
+    - `catch()` -> this is similar to `then` only that it represents the `reject` call.
+- Let's play a bit with them now:
+    ```JavaScript
+        const promise = new Promise((resolve, reject) => {
+            const value = Math.floor(Math.random() * 10)
+            if (value % 2 === 0) {
+                resolve(value)
+            } else {
+                reject(value)
+            }
+        })
+
+        promise
+        .then(value => {
+            console.log(`Success: We have received: ${value}`)
+        })
+        .catch(value => {
+            console.log(`Error and we received: ${value}`)
+        })
+    ```
+    - Note: usually on catch you will get an instance of an Error. We will see more when we will learn about the
+### Chaining promises
+
+- We can also connect multiple promises and use the `then` keyword multiple times, this is called `chaining promises`:
+```JavaScript
+        const promise1 = new Promise((resolve, reject) => {
+            resolve('This is the first promise')
+        })
+        const promise2 = new Promise((resolve, reject) => {
+            resolve('This is the second promise')
+        })
+        const promise3 = new Promise((resolve, reject) => {
+            resolve('This is the third promise')
+        })
+        const promise4 = new Promise((resolve, reject) => {
+            reject('This is the fourth promise')
+        })
+
+        promise1
+        .then(value => {
+            console.log(`Success: We have received: ${value}`)
+            return promise2
+        })
+        .then(value => {
+            console.log(`Success: We have received: ${value}`)
+            return promise3
+        })
+         .then(value => {
+            console.log(`Success: We have received: ${value}`)
+            return promise4
+        })
+        .catch(value => {
+            console.log(`Error and we received: ${value}`)
+        })
+    ```
+
+### Topic for self reading
+    - Search over the internet about the `thenable` functions.
