@@ -176,7 +176,7 @@
 ### Chaining promises
 
 - We can also connect multiple promises and use the `then` keyword multiple times, this is called `chaining promises`:
-```JavaScript
+    ```JavaScript
         const promise1 = new Promise((resolve, reject) => {
             resolve('This is the first promise')
         })
@@ -207,6 +207,39 @@
             console.log(`Error and we received: ${value}`)
         })
     ```
+### Common pitfall when using promises
+
+- When starting to play with Promises you might be tempted to do the following:
+    ```JavaScript
+        const promise1 = new Promise((resolve, reject) => {
+            resolve('This is the first promise')
+        })
+        const promise2 = new Promise((resolve, reject) => {
+            resolve('This is the second promise')
+        })
+        const promise3 = new Promise((resolve, reject) => {
+            resolve('This is the third promise')
+        })
+        const promise4 = new Promise((resolve, reject) => {
+            reject('This is the fourth promise')
+        })
+
+        promise1
+        .then(value => {
+            console.log(value)
+            promise2.then(value => {
+                console.log(value)
+                promise3.then(value => {
+                    console.log(value)
+                    promise4
+                    .catch(err => {
+                        console.log("Error is "+err)
+                    })
+                })
+            })
+        })
+    ```
+- Does this look familiar to you? Well.. this is the callback hell.. only that now we are using promises.
 
 ### Topic for self reading
     - Search over the internet about the `thenable` functions.
