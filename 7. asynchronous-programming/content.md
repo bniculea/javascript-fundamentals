@@ -243,3 +243,12 @@
 
 ### Topic for self reading
     - Search over the internet about the `thenable` functions.
+
+### Exercise 7.1
+Create a simple promise that resolves with a message "Hello, World!" after 2 seconds. Log the message to the console when the promise resolves.
+
+### Exercise 7.2
+Create a promise that rejects with an error message "Something went wrong!". Handle the rejection and log the error message to the console.
+
+### Exercise 7.3
+Create a promise that resolves with a random number between 1 and 10. Create a function that receives a numbers as a parameter and then returns a function that resolves with the parameter multiplied by 2. Chain the first promise with the promise returned by the function.
