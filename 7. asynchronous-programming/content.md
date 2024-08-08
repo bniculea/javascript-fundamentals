@@ -7,6 +7,7 @@
 - Callbacks
     - Callback hell
 - Promises
+    * Promise.all()
 - Async/Await
 
 ## Synchronous programming
@@ -252,3 +253,51 @@ Create a promise that rejects with an error message "Something went wrong!". Han
 
 ### Exercise 7.3
 Create a promise that resolves with a random number between 1 and 10. Create a function that receives a numbers as a parameter and then returns a function that resolves with the parameter multiplied by 2. Chain the first promise with the promise returned by the function.
+
+### Promise.all
+
+- Let's speak about the scenario when we want to trigger multiple promises in the same time and use the results when all of them are resolved (or rejected)
+- For this, we have the `Promise.all()` method which receives an array of promises as parameter and then it resolves when all of them resolve or it will fail, if any of the promises rejects.
+    * Again, MDN is your friend (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all)
+
+- Now let's see the following example:
+    ```JavaScript
+        const promise1 = new Promise((resolve, reject)=> {
+            setTimeout(()=> {
+                resolve('First Promise')
+            }, 1000)
+        })
+
+        const promise2 = new Promise((resolve, reject)=> {
+            setTimeout(()=> {
+                resolve('First Promise')
+            }, 5000)
+        })
+
+        const promise3 = new Promise((resolve, reject)=> {
+            setTimeout(()=> {
+                resolve('Third Promise')
+            }, 3000)
+        })
+
+        Promise.all([promise1, promise2, promise3])
+        .then(values => {
+            for(const value of values) {
+                console.log(value)
+            }
+        })
+    ```
+    - The values parameter of the `then` will be an array with 3 values, each corresponding to the promises passed as an array:
+        - the first value is from the first promise
+        - the second value is from the second promise
+        - the third value is from the third promise
+        - etc.
+    ```bash
+        //expected output
+        First Promise
+        Second Promise
+        Third Promise
+    ```
+
+### Exercise 7.4
+Create three promises that resolve with different messages after different durations (for example 1.5, 2.3, and 3.3 seconds). Use Promise.all to wait for all promises to resolve and then create a string from all the answers, joined by a comma
