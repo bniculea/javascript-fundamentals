@@ -10,7 +10,7 @@
     * Promise.all()
     * Promise.any()
     * Promise.race()
-    * Promise.
+    * Promise.allSettled()
 - Async/Await
 
 ## Synchronous programming
@@ -474,6 +474,62 @@ Create three promises that resolve with different messages after different durat
             { status: 'fulfilled', value: 'Resolve from p3' }
             ]
     ```
-- One use case scenario for allSettled is for situations when you need all of your promises to have a response, disregarding if they succeed or reject.
+- One use case scenario for `Promise.allSettled()` is for situations when you need all of your promises to have a response, disregarding if they succeed or reject.
     - For example let s say you are creating a dashboard for monitoring various services and you want to know if they are healthy or not so you are interested in the output from all of them.
 
+
+### Async/Await
+
+- The async/await is just a syntactic sugar for working with promises
+- It replaces the need for using the `.then()` method when `waiting` for a response
+- Basically, you place an `await` in front of a promise, to say to you are waiting for the promise to return an answer and will continue as soon as the promise succeeds.
+- The async is used to mark a function that returns a Promise.
+- In order to better understand the utility of the `async/await` let's see some basic operations witht `promises` using first the `.then` method and then replacing it with `async/await`
+    ```JavaScript
+        const promise1 = new Promise((resolve, reject) => {
+            setTimeout(()=> {
+                const randomNumber = Math.floor(Math.random()*10+10)
+                resolve(randomNumber)
+            },1500)
+        })
+        const promise2 = new Promise((resolve, reject) => {
+            setTimeout(()=> {
+                const randomNumber = Math.floor(Math.random()*10)
+                resolve(randomNumber)
+            },1500)
+        })
+
+        let total = 0;
+        promise1.then(value => {
+            total += value
+            return promise2
+        })
+        .then(value => {
+            total += value
+        })
+    ```
+    - Now, in order to make use of `async/await` we need to also create a function:
+    ```JavaScript
+        const promise1 = new Promise((resolve, reject) => {
+            setTimeout(()=> {
+                const randomNumber = Math.floor(Math.random()*10+10)
+                resolve(randomNumber)
+            },1500)
+        })
+        const promise2 = new Promise((resolve, reject) => {
+            setTimeout(()=> {
+                const randomNumber = Math.floor(Math.random()*10)
+                resolve(randomNumber)
+            },1500)
+        })
+
+
+        async function run(){
+            const firstNumber = await promise1
+            const secondNumber = await promise2
+            console.log(`Total is: ${firstNumber + secondNumber}`)
+        }
+
+        run()
+    ```
+    - Just look how simple to understand is the code now that we are using `async/await`
