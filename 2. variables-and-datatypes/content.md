@@ -441,7 +441,72 @@
             console.log(pet.age);
             console.log(pet.breed);
         ```
+- Now, even though we haven't spoken yet about `functions`, we can also use them to create new objects, similar to how you will do in a high level programming language. This way, the functions will behave much like a constructor, thus we will make use of the `new` keyword:
+    ```JavaScript
+        function Student(name, age, id) {
+        this.name = name;
+        this.age = age;
+        this.id= id
+        this.introduce = function() {
+            console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);
+        };
+        }
 
+        const student1 = new Student('Bogdan', 31, '456')
+        const studen2 = new Student('Marinica', 19, '323')
+    ```
+    - After you create objects this way, you can access their properties as you already know
+    - What is new, maybe, is to see that objects can also have functions but you have already used it when we talked about string methods and you will see next the array methods
+
+- Now the last thing that we will talk about, is a feature (which is not new anymore:D), namely classes..yes, in JavaScript you can also have classes since ES6:
+    ```JavaScript
+        class Bird {
+            construct(name){
+                this.name = name
+            }
+
+            speak() {
+                console.log('Cip cirip' + name)
+            }
+        }
+
+        const p1 = new Bird('Chicken')
+        const p2 = new Bird('Duck')
+        console.log(p1.name)
+        console.log(p2.name)
+        p1.speak()
+        p2.speak()
+    ```
+    - as you saw, you can define functions inside the class and they are bound to the instance that called them. See how two objects of the same type, have different properties
+    - you can also inherit from other classes, using the `extends` keyword:
+    ```JavaScript
+        class Animal {
+            constructor(numberOfLegs) {
+                this.numberOfLegs = numberOfLegs;
+            }
+        }
+
+        class Bird extends Animal{
+            constructor(name){
+                super(2)
+                this.name = name
+            }
+
+            speak() {
+                console.log('Cip cirip'+this.name)
+            }
+        }
+
+        const bird = new Bird('Hen');
+
+        console.log(bird.numberOfLegs)
+    ```
+    - As you can see, with the bird instance, we accessed a field that is defined in the parent clas
+
+- Extra notes about classes:
+    - You can also have static fields and methods inside a class
+    - You can define getters and setters
+    - With ES2022 you can mark methods and fields as private/public (we will talk more about it when we will get to typescript as right now, it might crash until you do something, thus, let's keep it simple)
 ### Arrays
 
 - Arrays are just a data structure that allows you to group multiple values in one place

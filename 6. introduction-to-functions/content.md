@@ -233,3 +233,39 @@ Note: Before moving to exercises, keep in mind that functions can receive anythi
 
 8.  Given two arrays of user objects, where each user object contains information about a person such as their `cnp`, `name`, `email`, create a JavaScript function  that will merge the two arrays into a single array of unique users. If a user with the same `cnp` appears in both arrays, the user from the second array should overwrite the user from the first array. Additionally, you need to add a new property `status` to each user from the first array, which should be set to `active`
 
+
+
+## Arrow functions
+
+- As you might have seen a lot on the internet, JavaScript also allows us to define function in a more concise way, using something that is called an arrow function.
+- Even though they are not a 1:1 replacement for traditional functions, they allow us to write code which is a bit easier to read.
+- Now let's see how simple you can combine a normal function to an arrow function
+
+    ```JavaScript
+        const sum = function(x,y) {
+            return x+y;
+        }
+
+        const sumArrow = (x, y) => {
+            return x+y;
+        }
+
+        //you can even do this if you have like a one-line code that only returns a value
+        const sumArrowPretty = (x,y) => x+y;
+    ```
+    - When we are calling them, we'll do it as we do for the normal ones, we just use the name followed by the paranthesis (and params if any)
+
+- Another nice thing is that if your function only has like one parameter, you can skip the paranthesis altogether
+    ```JavaScript
+        const doubleTheValue  = value => value * 2; // again, remember that this is an implicit return
+    ```
+
+- Arrow functions are used most often as callbacks. And you will use them a lot with the methods like `.map`, `.find`, `.filter`, etc
+
+- But, as we said, they are not a 1:1 replacement to an usual function, thus they have some drawbacks:
+
+    1. Arrow functions do not have their own `this` context. Instead, they inherit `this` from the surrounding scope at the time they are defined. This is one of the most significant differences from traditional functions. Don't worry, we will learn more about `this` very soon. If you're familiar with other programming languages, it will be quite easy to understand it but stay tuned
+    2. Arrow functions do not have their own arguments object. If you need access to the arguments, you'll need to use a traditional function or rest parameters.
+        * Normal functions allow you to access the parameters that will be passed to the function, they can be accessed under the `arguments` param. See MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments  
+    3. Arrow functions cannot be used as constructors. Attempting to use them with the new keyword will result in an error.
+        * if you recall, when we talked about objects, we specified that you can use a function as a constructor, if not, feel free to rewatch or even better, search on MDN

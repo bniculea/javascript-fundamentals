@@ -52,3 +52,39 @@ Title: Iterating Over Object Properties
 
 ### 9. Filtering Array Elements with For...of Loop
 - Create a JavaScript program that initializes an array of number and then uses the `For..of` structure to filter out its even values into a new array. The program should print the new array.
+
+### 10. Exercise: Library Management System
+Design a system where there are Users and Books. Users can be regular Members or Librarians. Members can borrow books, and librarians can add new books to the library. Each user has basic information like name and email, while each book has a title and author. The Librarian class should inherit from the User class.
+
+Details: 
+
+1. Create a User Class:
+
+    - The User class should have:
+        - Fields for name and email.
+        - A method getDetails() that returns the user's details.
+
+2. Create a Member Class:
+
+    - The Member class should inherit from User.
+    - Add a field borrowedBooks that keeps track of the books borrowed by the member.
+    - Add a method borrowBook(book) that adds a book to the borrowedBooks list.
+    - Add a method getBorrowedBooks() that returns the list of borrowed books.
+
+3. Create a Librarian Class:
+
+    - The Librarian class should inherit from User.
+    - Add a method addBook(book) that adds a new book to the library's collection.
+    - The library's collection of books should be a static field in the Librarian class so that all librarians share the same collection.
+    - Add a method getBooks() that returns the current list of books in the library.
+4. Create a Book Class:
+
+    - The Book class should have fields for title and author.
+    - Add a method getDetails() that returns the book's details.
+
+Test the Classes by performing the following actions:
+
+- Create instances of Member and Librarian.
+- Add some books to the library using a Librarian.
+- Have a Member borrow some books.
+- Print out the details of the borrowed books and the library's current collection.
