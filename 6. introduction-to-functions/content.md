@@ -269,3 +269,59 @@ Note: Before moving to exercises, keep in mind that functions can receive anythi
         * Normal functions allow you to access the parameters that will be passed to the function, they can be accessed under the `arguments` param. See MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments  
     3. Arrow functions cannot be used as constructors. Attempting to use them with the new keyword will result in an error.
         * if you recall, when we talked about objects, we specified that you can use a function as a constructor, if not, feel free to rewatch or even better, search on MDN
+
+    
+## Anonymous functions + IIFEs
+
+- These are functions that do not have any name and they have a couple of faces (some of them might look familiar, some of them will see right now)
+    ```JavaScript
+        setTimeout(function() {
+            console.log('It will take a whole second to see me');
+        }, 1000);
+
+        const add = function(x, y) {
+            return x+y
+        }
+        // arrow functions are also anonymous functions
+        const multiply = (x, y) => x * y
+    ```
+
+- The one sintax which is new so far (and maybe weird) is the `Immediately Invoked Function Expression` or `IIFE` which does exactly what its name says: it declares and also invoke a function at the same time:
+    ```JavaScript
+        (function() {
+            console.log('This runs immediately');
+        })();
+    ```
+
+- There are a couple of benefits for using IIFE and they are greatly explained on MDN: https://developer.mozilla.org/en-US/docs/Glossary/IIFE
+
+
+## Higher Order Functions
+
+- In JavaScript, a Higher Order function is a function which does at least one of the following things:
+    - Accepts one or more functions as a parameter
+    - Returns a function as its result
+    Note: You will use a lot of Higher Order functions when you will be playing with frameworks like React (e.g useEffect hook) and also when you will be playing with middlewares on the backend side
+
+- As a common example of a higher order function is the `.map` function available on arrays for example as it receives a function which will be called on each of the element from the array.
+
+- Other examples include:
+    - `filter`
+    - `reduce`
+    - `some`
+    - `every`
+
+- Now let's create a custom higher order function that returns a function that multiples a number by a given multiplier
+    ```JavaScript
+        function createMultiplier(multiplier) {
+            return function(number) {
+                return number * multiplier
+            }
+        }
+
+        const double = createMultiplier(2)
+        console.log(double(10))
+
+        const quadruple = createMultiplier(4)
+        console.log(quadruple(10))
+    ```

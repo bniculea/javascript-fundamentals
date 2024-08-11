@@ -507,6 +507,7 @@
     - You can also have static fields and methods inside a class
     - You can define getters and setters
     - With ES2022 you can mark methods and fields as private/public (we will talk more about it when we will get to typescript as right now, it might crash until you do something, thus, let's keep it simple)
+    
 ### Arrays
 
 - Arrays are just a data structure that allows you to group multiple values in one place
