@@ -10,9 +10,12 @@ An easy introduction to the JavaScript Programming language
 * [5. Exercises for the Introduction part](<5. intro-exercises/content.md>)
 * [6. Introduction to functions](<6. introduction-to-functions/content.md>)
 * [7. Asynchronous programming](<7. asynchronous-programming/content.md>)
+* [8. fetch-api](<8. fetch-api/content.md>)
 
 ## Resources:
 - Eloquent JavaScript 4th edition
+- https://www.youtube.com/watch?v=8aGhZQkoFbQ&t=979s
+
 
 ## How to get the most out of it:
 
