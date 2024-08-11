@@ -292,3 +292,41 @@
         } while (i <= 10)
     ```
     - This is useful when you need at least one execution of the body before continuing (e.g aws http calls)
+
+### Break vs continue
+
+- All repetitive structures support the `break` and `continue` instructions.
+- The differences between them are the following:
+    - if your code reaches a `break` statement, the entire loop will be stopped and the execution will be resumed to the next instruction that comes after it.
+    - if your code reaches a `continue` statement, the current iteration is skipped and your code will move righ to the next iteration.
+
+
+Now, let's see a simple example that will emphasize the difference between them:
+
+    ```JavaScript
+        const arr = [1,2,3,4,5,6,7,8,9, 10, 11]
+
+        for(const value of arr) {
+        if (value % 2 == 0) {
+            continue
+        }
+        console.log(value)
+        }
+
+        console.log('--------------\n\n')
+        for(const value of arr) {
+        if (value % 2 == 0) {
+            break
+        }
+        console.log(value)
+        }
+    ```
+    - In the first situation, the console.log happens only when the current value is not an even number.
+    - In the second snippet, as soon as we reach an even number, the entire for will be stopped.
+
+
+- So `continue` can be used when you want to skip some iteration and `break` when you want to completely exit the repetitive instruction when a certain condition is met.
+
+### Free practice
+
+- Think for a scenario where `break` and/or `continue` can be helpful
