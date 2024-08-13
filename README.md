@@ -15,7 +15,7 @@ An easy introduction to the JavaScript Programming language
 ## Resources:
 - Eloquent JavaScript 4th edition
 - https://www.youtube.com/watch?v=8aGhZQkoFbQ&t=979s
-
+- https://www.digitalocean.com/community/tutorials/understanding-javascript-promises?ref=dailydev
 
 ## How to get the most out of it:
 
