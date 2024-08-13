@@ -15,7 +15,9 @@ An easy introduction to the JavaScript Programming language
 ## Resources:
 - Eloquent JavaScript 4th edition
 - https://www.youtube.com/watch?v=8aGhZQkoFbQ&t=979s
-- https://www.digitalocean.com/community/tutorials/understanding-javascript-promises?ref=dailydev
+- https://www.digitalocean.com/community/tutorials/understanding-javascript-promises?ref=dailydev 
+- https://www.freecodecamp.org/news/how-to-fetch-data-from-an-api-using-the-fetch-api-in-javascript/#:~:text=The%20Fetch%20API%20is%20a,and%20fetch%20data%20from%20servers.
+- https://dev.to/sajankc/top-free-apis-without-an-api-key-120n
 
 ## How to get the most out of it:
 
