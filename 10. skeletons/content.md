@@ -30,3 +30,21 @@
         `"start": node index.js`
     - create a file named `index.js` with `console.log('Hello)` as content
     - open the terminal and type: `npm start`
+
+
+2. 
+     - Make sure that you have the node + npm installed. If not, see the introduction section
+    - Open a terminal in the folder that you want to have the project in
+    - create an npm project
+        - either `npm init` or `npm init -y`
+    - install typescript
+        `npm install typescript`
+    - run `npx tsc --init`
+    - uncomment the `outDir` entry and set it to `./dist`,
+    - add the following script in package json:
+    ```typescript
+        "build": "tsc -w",
+        "start:dev": "node --watch dist/index.js",
+        "start": "npm run build & npm run start:dev"
+    ``` 
+    - create a file named: `index.ts` and add a console.log there

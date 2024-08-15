@@ -11,6 +11,7 @@ An easy introduction to the JavaScript Programming language
 * [6. Introduction to functions](<6. introduction-to-functions/content.md>)
 * [7. Asynchronous programming](<7. asynchronous-programming/content.md>)
 * [8. fetch-api](<8. fetch-api/content.md>)
+* [9. typescript](<9. typescript/content.md>)
 
 ## Resources:
 - Eloquent JavaScript 4th edition
@@ -18,7 +19,7 @@ An easy introduction to the JavaScript Programming language
 - https://www.digitalocean.com/community/tutorials/understanding-javascript-promises?ref=dailydev 
 - https://www.freecodecamp.org/news/how-to-fetch-data-from-an-api-using-the-fetch-api-in-javascript/#:~:text=The%20Fetch%20API%20is%20a,and%20fetch%20data%20from%20servers.
 - https://dev.to/sajankc/top-free-apis-without-an-api-key-120n
-
+- https://www.udemy.com/course/the-web-developer-bootcamp/
 ## How to get the most out of it:
 
 - Most of the sections have exercises
